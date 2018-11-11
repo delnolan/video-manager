@@ -10,6 +10,15 @@
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
  Text Domain:  twenty-seventeen-child
 */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
+html, body, div, h1, h2, h3, h4, h5, h6, p, li, ul , div{
+	font-family: 'Roboto', sans-serif;
+	color: #363636;
+}
+body, html{
+	padding: 0;
+	margin: 0;
+}
 .centered{
 	width: 1170px;
 	margin-left: 50%;
@@ -18,4 +27,74 @@
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%); 
     -o-transform:translateX(-50%);
+}
+.video-list {
+    width: 25%;
+    float: left;
+}
+.video-list {
+    width: 25%;
+    float: left;
+}
+.preview-video {
+    width: 70%;
+    float: right;
+}
+
+div#preview_viewport {
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+}
+#preview_viewport video {
+    width: 600px;
+    height: 400px;
+    background: #000000;
+    position: absolute;
+}
+html{
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.heading{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.heading h1{
+	font-size: 48px;
+	color: #363636 !important;
+	margin-bottom: 0px;
+}
+form#featured_upload {
+    padding-top: 0px;
+    padding-bottom: 0;
+}
+.video-upload-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-top: 1px solid #363636;
+    border-bottom: 1px solid #363636;
+}
+.sort-and-preview{
+	width: 100%;
+	float: left;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+li.video-viewport.ui-sortable-handle {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    float: left;
+    width: 85px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#sortable{
+	width: 100%;
+	position: relative;
+}
+li.video-viewport video{
+	background-color: #000000;
+	width: 60px;
+	height: 40px;
 }
