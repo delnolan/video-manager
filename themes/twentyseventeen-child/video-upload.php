@@ -4,6 +4,7 @@
  *
  */
  wp_head();
+ if(is_user_logged_in()){
  ?>
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -81,7 +82,7 @@
 	<div class="sort-and-preview"></div>
 		<div class="video-list" >
 			<?php
-			if(is_user_logged_in()){
+			
 				$id = get_current_user_id();
 				$accepted_mimes = array ('video/x-flv', 'video/mp4', 'application/x-mpegURL', 'video/MP2T', 'video/3gpp', 'video/quicktime', 'video/x-msvideo', 'video/x-ms-wmv', );
 				$args = array(
@@ -127,15 +128,9 @@
 				}
 				?>
 				
-				<?php
-			}else{
-				echo 'Computer says no... "Please log in"';
-			}
-			?>
 		<div class="preview-video">
 			
 			<?php
-			if(is_user_logged_in()){
 				$id = get_current_user_id();
 				$accepted_mimes = array ('video/x-flv', 'video/mp4', 'application/x-mpegURL', 'video/MP2T', 'video/3gpp', 'video/quicktime', 'video/x-msvideo', 'video/x-ms-wmv', );
 				$args = array(

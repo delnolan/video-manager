@@ -98,3 +98,31 @@ li.video-viewport video{
 	width: 60px;
 	height: 40px;
 }
+.above-the-fold {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+.hero {
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%); 
+    -o-transform :translateX(-50%) translateY(-50%);
+}
+.hero h1 {
+	margin-bottom: 5px;
+}
+.hero a {
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 10px 30px;
+    margin-top: 30px;
+}
+.hero div {
+    margin-bottom: 50px;
+}
