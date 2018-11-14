@@ -32,7 +32,7 @@
 			<div class="hero">
 				<h1>Vift</h1>
 				<div>Making Video Real</div>
-				<a href="<?php echo get_permalink(5);?>">Video Manager</a>
+				<a href="<?php echo get_permalink(5);?>">Create Your Video</a>
 			</div>
 		</div>
 
