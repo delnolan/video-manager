@@ -29,12 +29,26 @@
 	<header id="masthead" class="site-header" role="banner">
 
 		<div class="above-the-fold">
+			<div class="overlay"></div>
+			<video id="intro_video" loop muted autoplay">
+				<source src="<?php echo get_stylesheet_directory_uri() ?>/assets/Vift.mp4" type="video/mp4">
+				<source src="<?php echo get_stylesheet_directory_uri() ?>/assets/Vift.ogg" type="video/ogg">
+				Your browser does not support the video tag.
+			</video>
 			<div class="hero">
 				<h1>Vift</h1>
 				<div>Making Video Real</div>
 				<a href="<?php echo get_permalink(5);?>">Create Your Video</a>
 			</div>
 		</div>
+		
+		<script>
+		var video = document.getElementById("intro_video");
+		video.oncanplaythrough = function() {
+			video.muted = true;
+			video.play();
+		}
+		</script>
 
 		<?php if ( has_nav_menu( 'top' ) ) : ?>
 			<div class="navigation-top">
@@ -45,7 +59,3 @@
 		<?php endif; ?>
 
 	</header><!-- #masthead -->
-
-
-	<div class="site-content-contain">
-		<div id="content" class="site-content">

@@ -8,6 +8,7 @@
  ?>
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <script>
   $( function() {
     $( "#sortable" ).sortable({
@@ -67,19 +68,12 @@
  <body class="video-manager">
  
  <div class="centered heading" >
-	<h1>Video Manager</h1>
+	<h1>Create Your Video</h1>
  </div>
-  <div class="centered video-upload-section">
-	<h3 id="upload-instruction">Upload another video...</h3>
-	<form id="featured_upload" method="post" action="#" enctype="multipart/form-data">
-		<input type="file" name="my_image_upload" id="my_image_upload"  multiple="false" />
-		<input type="hidden" name="post_id" id="post_id" value="56" />
-		<?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' ); ?>
-		<input id="submit_my_image_upload" name="submit_my_image_upload" type="submit" value="Upload" />
-	</form>
-</div>
  <div class="centered">
-	<div class="sort-and-preview"></div>
+ <div class="manager-lhs">
+   <div class="video-upload-section">
+	</div>
 		<div class="video-list" >
 			<?php
 			
@@ -97,7 +91,7 @@
 				// The Loop
 				if ( $query->have_posts() ) {
 					?>
-					<div class="instrunction" > Drag and drop the videos to set the order. </div>
+					<h3 class="instrunction" > Drag and drop the videos to set the order. </h3>
 					<ul id="sortable" class="video-list" >
 			<?php
 					while ( $query->have_posts() ) {
@@ -120,6 +114,15 @@
 					/* Restore original Post Data */
 					?>
 					</ul>
+					<div class="video-upload-wrapper">
+						<h3 id="upload_the_video"><i class="fas fa-upload"></i> Upload video or image. </h3>
+						<form id="featured_upload" method="post" action="#" enctype="multipart/form-data">
+						<input type="file" name="my_image_upload" id="my_image_upload"  multiple="false" />
+						<?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' ); ?>
+						<input id="submit_my_image_upload" name="submit_my_image_upload" type="submit" value="Upload" />
+					</form>
+					</div>
+					</div>
 					</div>
 					<?php
 					wp_reset_postdata();
@@ -141,7 +144,7 @@
 					'post_mime_type'    => $accepted_mimes
 				);
 				$query = new WP_Query( $args );
-				// The Loop
+				// The Loop           
 				if ( $query->have_posts() ) {
 					?>
 					<div id="preview_viewport" class="preview-viewport" >
@@ -177,11 +180,15 @@
 	jQuery('.remove-video').on('click', function(){
 		jQuery(this).parent().submit();
 	});
-	console.log(jQuery('#sortable>li').length);
-	if(jQuery('#sortable>li').length == 0){
-		jQuery('#upload-instruction').text('Please Upload a Video...');
-	}else{
-		jQuery('#upload-instruction').text('You can upload another video...');
-	}
+	
+	jQuery('#upload_the_video').on('click', function(){
+		if($('#my_image_upload').val() == ''){
+			$('#my_image_upload').click();
+		}
+	});
+	$('#my_image_upload').on('change' , function(){
+		console.log($('#my_image_upload'));
+		$('#featured_upload').submit();
+	});
 </script>
 </body>
