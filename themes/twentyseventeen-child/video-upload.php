@@ -3,9 +3,11 @@
  * Template Name: Video Upload
  *
  */
- wp_head();
- if(is_user_logged_in()){
- ?>
+ if(!is_user_logged_in()){
+	 auth_redirect();
+}else{
+	 wp_head();
+		?>
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -30,6 +32,7 @@
 	
 		var zindex = 0;
 		$("#play_button").on("click", function() {
+			$("#play_button").hide();
 			$('.preview-viewport video').each(function(){
 				if($(this).css('z-index') == zindex){
 					$('.preview-viewport video').each(function(){
@@ -59,6 +62,7 @@
 						zindex=0;
 						return zindex;
 					});
+					$("#play_button").show();
 				}
 			};
 		});
@@ -127,7 +131,16 @@
 					<?php
 					wp_reset_postdata();
 				} else {
-					// no posts found
+					?>
+					<div class="video-upload-wrapper">
+						<h3 id="upload_the_video"><i class="fas fa-upload"></i> Upload video or image. </h3>
+						<form id="featured_upload" method="post" action="#" enctype="multipart/form-data">
+						<input type="file" name="my_image_upload" id="my_image_upload"  multiple="false" />
+						<?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' ); ?>
+						<input id="submit_my_image_upload" name="submit_my_image_upload" type="submit" value="Upload" />
+					</form>
+					</div>
+					<?php
 				}
 				?>
 				
@@ -162,16 +175,14 @@
 					/* Restore original Post Data */
 					wp_reset_postdata();
 					?>
+					<button id="play_button"><i class="fas fa-play-circle"></i></button>
 				</div>
-				<button id="play_button">Play</button>
 				<?php
 				} else {
 					// no posts found
-				}
-			}else{
-				echo 'Computer says no... "Please log in"';
-			}
-			?>
+				}		
+}
+?>
 			
 		</div>
 	</div>
